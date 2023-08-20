@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import Button from './Button';
 
-function SplitBillForm() {
+function SplitBillForm({ selectedFriend }) {
   return (
     <form className="form-split-bill">
-      <h2>Split a bill with PLACEHOLDER</h2>
+      <h2>Split a bill with {selectedFriend.name}</h2>
 
       <label>💰 Bill value</label>
       <input type="text" />
@@ -11,13 +13,13 @@ function SplitBillForm() {
       <label>🧍 Your expense</label>
       <input type="text" />
 
-      <label>🧍 X expense</label>
+      <label>🧍 {selectedFriend.name} expense</label>
       <input type="text" disabled />
 
       <label>🤑 Who is paying the bill?</label>
       <select>
         <option value="user">You</option>
-        <option value="friend">X</option>
+        <option value="friend">{selectedFriend.name}</option>
       </select>
       <Button>Add</Button>
     </form>
