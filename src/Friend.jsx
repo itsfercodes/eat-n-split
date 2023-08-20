@@ -5,7 +5,7 @@ function Friend({ friend, onSelectFriend, selectedFriend }) {
   const isSelected = selectedFriend?.id === friend.id;
 
   return (
-    <li className={isSelected && 'selected'}>
+    <li className={isSelected ? 'selected' : ''}>
       <img alt={friend.name} src={friend.image} />
       <h3>{friend.name}</h3>
       {friend.balance > 0 && (
