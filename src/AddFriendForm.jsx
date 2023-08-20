@@ -3,22 +3,24 @@
 import { useState } from 'react';
 import Button from './Button';
 
-function AddFriendForm({ onAddFriend, friends }) {
+function AddFriendForm({ onAddFriend }) {
   const [name, setName] = useState('');
-  const [url, setUrl] = useState(`https://i.pravatar.cc/48?u=${Date.now()}`);
+  const [url, setUrl] = useState(`https://i.pravatar.cc/48`);
 
   function handleSubmit(e) {
-    if (!name) return;
+    if (!name || !url) return;
+
+    const id = crypto.randomUUID();
     e.preventDefault();
     const newFriend = {
-      id: Date.now(),
+      id,
       name,
-      image: url,
+      image: `${url}?=${id}`,
       balance: 0
     };
-    onAddFriend([...friends, newFriend]);
+    onAddFriend(newFriend);
     setName('');
-    setUrl(`https://i.pravatar.cc/48?u=${Date.now()}`);
+    setUrl(`https://i.pravatar.cc/48`);
   }
 
   return (
