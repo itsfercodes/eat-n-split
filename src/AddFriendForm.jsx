@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Button from './Button';
 
-function AddFriendForm({ onAddFriend, friends, onToggleFriendForm }) {
+function AddFriendForm({ onAddFriend, friends }) {
   const [name, setName] = useState('');
   const [url, setUrl] = useState(`https://i.pravatar.cc/48?u=${Date.now()}`);
 
@@ -19,7 +19,6 @@ function AddFriendForm({ onAddFriend, friends, onToggleFriendForm }) {
     onAddFriend([...friends, newFriend]);
     setName('');
     setUrl(`https://i.pravatar.cc/48?u=${Date.now()}`);
-    onToggleFriendForm(false);
   }
 
   return (

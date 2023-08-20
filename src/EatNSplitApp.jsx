@@ -6,12 +6,20 @@ import Button from './Button';
 import SplitBillForm from './SplitBillForm';
 
 function EatNSplitApp() {
+  const [showAddFriend, setShowAddFriend] = useState(false);
+
+  function handleShowAddFriend() {
+    setShowAddFriend((show) => !show);
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
         <FriendsList />
-        <AddFriendForm />
-        <Button>Add friend</Button>
+        {showAddFriend && <AddFriendForm />}
+        <Button onClick={handleShowAddFriend}>
+          {showAddFriend ? 'Close' : 'Add friend'}
+        </Button>
       </div>
       <SplitBillForm />
     </div>
